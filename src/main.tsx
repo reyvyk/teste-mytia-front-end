@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { PrimeReactProvider } from 'primereact/api'
 import App from './App.tsx'
 //CSS 
-import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primereact/resources/themes/bootstrap4-dark-blue/theme.css"
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

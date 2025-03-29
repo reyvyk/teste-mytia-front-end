@@ -21,7 +21,6 @@ const Home = () => {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
         setFilmes(response.data.results)
-        console.log(response.data.results)
       } catch (err) {
         if (axios.isAxiosError(err)) {
           setError(err.message);

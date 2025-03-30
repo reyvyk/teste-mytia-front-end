@@ -5,6 +5,7 @@ import { PrimeReactProvider } from 'primereact/api'
 import App from './App.tsx'
 //CSS 
 import "primereact/resources/themes/bootstrap4-dark-blue/theme.css"
+import "../node_modules/primeflex/primeflex.css"
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

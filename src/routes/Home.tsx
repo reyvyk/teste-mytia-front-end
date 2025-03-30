@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import Filme_Card from '../components/Filme_Card/Filme_Card';
 
-//api key
-import { apikey } from '../configs/apiTMDB';
+const moviesURL = import.meta.env.VITE_API;
+const apikey = import.meta.env.VITE_API_KEY;
 
 type Filmes = {
   id: number;
@@ -12,20 +13,17 @@ type Filmes = {
 }
 
 const Home = () => {
-	const [filmes, setFilmes] = useState<Filmes[]>([]);
+	const [filmesPopular, setFilmesPopular] = useState<Filmes[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect( ()=> {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apikey}`);
-        setFilmes(response.data.results)
-      } catch (err) {
-        if (axios.isAxiosError(err)) {
-          setError(err.message);
-        }
-        
+        console.log(`${moviesURL}top_rated?api_key=${apikey}`)
+        const response = await axios.get(`${moviesURL}top_rated?${apikey}`);
+        setFilmesPopular(response.data.results)
+        console.log(moviesURL)
         if (err instanceof Error) {
           setError(err.message);
         } else {
@@ -50,15 +48,15 @@ const Home = () => {
   return (
     <>
       <h1>Filmes</h1>
-      <ul>
-        {filmes.map((filme) => (
-          <li key={filme.id}>
-            {filme.title} /
-            {filme.release_date} /
-            {filme.vote_average} /
-          </li>
-        ))}
-      </ul>
+        <div className='flex flex-row flex-wrap justify-content-center'>
+          {filmesPopular.map((filme) => (
+            <div key={filme.id} >
+              <Filme_Card
+                filme={filme}
+              />
+            </div>
+          ))}
+        </div>
     </>
   )
 }

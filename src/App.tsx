@@ -1,16 +1,11 @@
-import { Route, Routes } from 'react-router-dom'
-import Home from './routes/Home'
-import Details from './routes/Details' 
-import Menu from './components/Menu'
+import { Outlet } from 'react-router-dom'
+import Main_Menu from './components/Main_Menu/Main_Menu'
 
 function App() {
   return (
     <>
-      <Menu />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />
-      </Routes>
+      <Main_Menu />
+      <Outlet />
     </>
   )
 }

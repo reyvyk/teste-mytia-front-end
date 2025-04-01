@@ -1,10 +1,12 @@
 # Stage 1: Build the application
 FROM node:20-alpine AS build
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+COPY package.json  ./
+COPY yarn.lock ./
+# RUN yarn ci
 COPY . .
-RUN npm run build
+RUN yarn install --frozen-lockfile
+RUN yarn run build
 
 # Stage 2: Serve the application using Nginx
 FROM nginx:alpine

@@ -1,8 +1,8 @@
 import { Button } from "primereact/button"
-import { FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa"
 import { Card } from "primereact/card"
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import "./Filme_Card.css"
 
 const Filme_Card = ({movie, showLink = true}: any) => {

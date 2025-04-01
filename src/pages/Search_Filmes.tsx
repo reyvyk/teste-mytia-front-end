@@ -1,27 +1,27 @@
-import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator';
+import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator'
 import { useSearchParams } from 'react-router-dom'
 import useServiceAPI from '../hooks/useServiceAPI'
 import { useEffect, useState } from 'react'
 
 
 import Filme_Card from '../components/Filme_Card/Filme_Card'
-import { fetchMovies } from '../hooks/apiService';
+import { fetchMovies } from '../hooks/apiService'
 
 const Search_Filmes = () => {
   const [searchParams] = useSearchParams()
   const busca = searchParams.get('q')
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [first, setFirst] = useState<number>(0);
-  const [rows, setRows] = useState<number>(10);
+  const [currentPage, setCurrentPage] = useState<number>(1)
+  const [first, setFirst] = useState<number>(0)
+  const [rows, setRows] = useState<number>(10)
   
   const { data: searchResults, isLoading, error } = useServiceAPI<any>(fetchMovies, [busca, currentPage])
 
   const onPageChange = (event: PaginatorPageChangeEvent) => {
-    setFirst(event.first);
-    setRows(event.rows);
-    setCurrentPage(event.page + 1);
-  };
+    setFirst(event.first)
+    setRows(event.rows)
+    setCurrentPage(event.page + 1)
+  }
 
   useEffect(() => {},[currentPage])
 
@@ -48,7 +48,7 @@ const Search_Filmes = () => {
         />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Search_Filmes;
+export default Search_Filmes

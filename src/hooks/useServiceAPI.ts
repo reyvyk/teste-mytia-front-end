@@ -18,7 +18,6 @@ const useServiceAPI = <T,>(apiFunction: (...args: any[]) => Promise<T>, args: an
 
       try {
         const result = await apiFunction(...args)
-        console.log(result)
         setData(result)
       } catch (err: any) {
         if (err.message || 'An exception occurred') {
@@ -27,12 +26,12 @@ const useServiceAPI = <T,>(apiFunction: (...args: any[]) => Promise<T>, args: an
       } finally {
         setIsLoading(false)
       }
-    };
+    }
 
     fetchData()
   }, [apiFunction, ...args])
 
   return { data, isLoading, error }
-};
+}
 
 export default useServiceAPI

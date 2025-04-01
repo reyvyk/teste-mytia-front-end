@@ -1,22 +1,13 @@
+import { fetchMovieDetails } from "../hooks/apiService"
 import useServiceAPI from "../hooks/useServiceAPI"
 import { useParams } from "react-router-dom"
 import { FaStar } from "react-icons/fa";
 import { Card } from "primereact/card";
 
-interface MovieDetails {
-  title: string;
-  overview: string;
-  release_date: string;
-  vote_average: number;
-  poster_path: string;
-}
-
-const API_KEY = import.meta.env.VITE_API_KEY
-const API_URL = import.meta.env.VITE_API_ID_MOVIE
 
 const Details = () => {
   const {id} = useParams()
-  const {data: movieDetails, isLoading, error} = useServiceAPI<MovieDetails>(`${API_URL}${id}?${API_KEY}`)
+  const {data: movieDetails, isLoading, error} = useServiceAPI(fetchMovieDetails, [id])
 
   return (
     <>

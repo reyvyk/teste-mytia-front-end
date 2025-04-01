@@ -1,13 +1,12 @@
-import axios, { AxiosRequestConfig } from 'axios'
 import { useState, useEffect } from 'react'
 
-interface UseConfigAPIProps<T> {
+interface UseServiceAPIProps<T> {
   data: T | null
   isLoading: boolean
   error: string | null
 }
 
-const useServiceAPI = <T,>(url: string, config?: AxiosRequestConfig): UseConfigAPIProps<T> => {
+const useServiceAPI = <T,>(apiFunction: (...args: any[]) => Promise<T>, args: any[] = []): UseServiceAPIProps<T> => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [data, setData] = useState<T | null>(null)
@@ -18,13 +17,12 @@ const useServiceAPI = <T,>(url: string, config?: AxiosRequestConfig): UseConfigA
       setError(null)
 
       try {
-        const response = await axios.get<T>(url, config)
-        setData(response.data)
-      } catch (err) {
-        if (axios.isAxiosError(err)) {
+        const result = await apiFunction(...args)
+        console.log(result)
+        setData(result)
+      } catch (err: any) {
+        if (err.message || 'An exception occurred') {
           setError(err.message)
-        } else {
-          setError('An unexpected error occurred')
         }
       } finally {
         setIsLoading(false)
@@ -32,7 +30,7 @@ const useServiceAPI = <T,>(url: string, config?: AxiosRequestConfig): UseConfigA
     };
 
     fetchData()
-  }, [url, config])
+  }, [apiFunction, ...args])
 
   return { data, isLoading, error }
 };

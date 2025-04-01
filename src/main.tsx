@@ -7,9 +7,9 @@ import App from './App.tsx'
 import "primereact/resources/themes/bootstrap4-dark-blue/theme.css"
 import "../node_modules/primeflex/primeflex.css"
 //Components Page
-import Search_Filmes from './pages/Search_Filmes.tsx'
-import Details from './pages/Details.tsx'
-import Home from './pages/Home.tsx'
+import Search_Filmes from './pages/Search_Movies/Search_Movies.tsx'
+import Details from './pages/Details/Details.tsx'
+import Home from './pages/Home/Home.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

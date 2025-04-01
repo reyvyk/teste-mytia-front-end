@@ -1,75 +1,95 @@
 # Frontend Mytia
 
-A React-based frontend application for managing and searching movies. This project is Dockerized and uses PrimeReact for UI components.
+Frontend Mytia é uma aplicação React para explorar e buscar filmes populares. O projeto utiliza **React**, **TypeScript**, **PrimeReact** e está configurado para ser executado em um ambiente Docker.
 
 ---
 
-## Table of Contents
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Setup Instructions](#setup-instructions)
-- [Running the Application](#running-the-application)
-  - [Using Docker](#using-docker)
-  - [Without Docker](#without-docker)
-- [Routing](#routing)
-- [Testing](#testing)
-- [Project Structure](#project-structure)
-- [License](#license)
+## 📋 Índice
+- [Recursos](#recursos)
+- [Pré-requisitos](#pré-requisitos)
+- [Configuração do Projeto](#configuração-do-projeto)
+- [Executando o Projeto](#executando-o-projeto)
+  - [Com Docker](#com-docker)
+  - [Sem Docker](#sem-docker)
+- [Rotas da Aplicação](#rotas-da-aplicação)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Testes](#testes)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
 ---
 
-## Features
-- Search for movies using an external API.
-- Pagination for search results.
-- Responsive design using PrimeReact and PrimeFlex.
-- Dockerized for easy deployment.
+## ✨ Recursos
+- Listagem de filmes populares.
+- Busca de filmes por título.
+- Paginação para explorar resultados.
+- Interface responsiva com **PrimeReact** e **PrimeFlex**.
+- Configuração de ambiente com variáveis no `.env`.
+- Dockerizado para fácil implantação.
 
 ---
 
-## Prerequisites
-Make sure you have the following installed:
-- [Node.js](https://nodejs.org/) (v18 or higher)
+## 🛠️ Pré-requisitos
+Certifique-se de ter as seguintes ferramentas instaladas:
+- [Node.js](https://nodejs.org/) (v18 ou superior)
+- [Yarn](https://yarnpkg.com/) (opcional, mas recomendado)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ---
 
-## Setup Instructions
+## ⚙️ Configuração do Projeto
 
-1. Clone the repository:
+1. Clone o repositório:
    ```bash
-   git clone https://github.com/your-username/frontend-mytia.git
+   git clone https://github.com/seu-usuario/frontend-mytia.git
    cd frontend-mytia
 
-2. Install dependecias
+2. Crie um arquivo .env na raiz do projeto com as seguintes variáveis:
+    VITE_API_KEY=your_api_key
+    VITE_API_BASE=https://api.themoviedb.org/3
+    VITE_API_IMG=https://image.tmdb.org/t/p/w500/
+
+3. Instale as dependências:
+
     yarn install
 
-3. Create a .env file in the root directory and add the following environment variables:
+🚀 Executando o Projeto
 
-  VITE_API_KEY=your_api_key
-  VITE_API_SEARCH=https://api.example.com/search
+Com Docker
 
-Running the Application
-  Using Docker
-  1. Build and run the Docker container:
-      docker-compose up --build
+1. Construa e inicie o container:
+    docker-compose up --build
 
-  2. OpenAccess the application in your browser at:
-     http://localhost:3000/
+2. Acesse a aplicação no navegador:
+    http://localhost:3000
 
-Without Docker
-  1. Start the development server:
-    yarn run dev
+Sem Docker
 
-  2. Open the application in your browser at:
-     http://localhost:3000/
+1. Inicie o servidor de desenvolvimento:
+    http://localhost:5173
+
+🌐 Rotas da Aplicação
+    Rota	               Descrição
+    /	                   Página inicial com filmes populares.
+    /search?q=	         Página de busca de filmes.
+    *	                   Página de erro 404 (não encontrada).
 
 
-Routing
-The application uses react-router-dom for routing. Below are the main routes:
-
-  1. Home Page (/):
-     Displays the main menu and navigation options.
-  2. Search Page (/search/?q=<query>):
-    Displays search results for movies based on the query parameter q.
-    Example: /search/?q=Inception
+📂 Estrutura do Projeto
+    frontend-mytia/
+    ├── src/
+    │   ├── components/       # Componentes reutilizáveis (e.g., Main_Menu, Filme_Card)
+    │   ├── hooks/            # Hooks customizados (e.g., useServiceAPI)
+    │   ├── pages/            # Páginas principais (e.g., Home, Search_Filmes)
+    │   ├── routes/           # Configuração centralizada de rotas
+    │   ├── services/         # Funções para chamadas de API
+    │   ├── types/            # Definições de tipos TypeScript
+    │   ├── utils/            # Funções utilitárias
+    │   └── App.tsx           # Componente principal da aplicação
+    ├── public/               # Arquivos estáticos
+    ├── Dockerfile            # Configuração do Docker
+    ├── [docker-compose.yml](http://_vscodecontentref_/1)    # Configuração do Docker Compose
+    ├── [package.json](http://_vscodecontentref_/2)          # Dependências e scripts do projeto
+    ├── [tsconfig.json](http://_vscodecontentref_/3)         # Configuração do TypeScript
+    └── [README.md](http://_vscodecontentref_/4)             # Documentação do projeto

@@ -1,6 +1,6 @@
-import Filme_Card from '../components/Filme_Card/Filme_Card'
-import { fetchPopularMovies } from '../hooks/apiService'
-import useServiceAPI from '../hooks/useServiceAPI'
+import Filme_Card from '../../components/Filme_Card/Filme_Card'
+import { fetchPopularMovies } from '../../hooks/apiService'
+import useServiceAPI from '../../hooks/useServiceAPI'
 
 const Home = () => {
   const { data: popularMovies, isLoading, error } = useServiceAPI(fetchPopularMovies)

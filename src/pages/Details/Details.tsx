@@ -1,5 +1,5 @@
-import { fetchMovieDetails } from "../hooks/apiService"
-import useServiceAPI from "../hooks/useServiceAPI"
+import { fetchMovieDetails } from "../../hooks/apiService"
+import useServiceAPI from "../../hooks/useServiceAPI"
 import { useParams } from "react-router-dom"
 import { FaStar } from "react-icons/fa"
 import { Card } from "primereact/card"

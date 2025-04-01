@@ -1,11 +1,11 @@
 import { Paginator, PaginatorPageChangeEvent } from 'primereact/paginator'
 import { useSearchParams } from 'react-router-dom'
-import useServiceAPI from '../hooks/useServiceAPI'
+import useServiceAPI from '../../hooks/useServiceAPI'
 import { useEffect, useState } from 'react'
 
 
-import Filme_Card from '../components/Filme_Card/Filme_Card'
-import { fetchMovies } from '../hooks/apiService'
+import Filme_Card from '../../components/Filme_Card/Filme_Card'
+import { fetchMovies } from '../../hooks/apiService'
 
 const Search_Filmes = () => {
   const [searchParams] = useSearchParams()

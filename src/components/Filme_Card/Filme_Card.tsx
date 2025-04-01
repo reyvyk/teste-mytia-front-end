@@ -1,28 +1,40 @@
-import { Card } from "primereact/card"
 import { Button } from "primereact/button"
 import { FaStar } from "react-icons/fa";
+import { Card } from "primereact/card"
 
+import { useNavigate } from "react-router-dom";
 import "./Filme_Card.css"
 
-const filmesIMG = import.meta.env.VITE_API_IMG;
+const Filme_Card = ({movie, showLink = true}: any) => {
+  const filmesIMG = import.meta.env.VITE_API_IMG
+  const navigate = useNavigate()
 
-const Filme_Card = ({filme, showLink = true}: any) => {
+  const handleDetails = () => {
+    if(!showLink) return
+    navigate(`/details/${movie.id}`)
+  }
 
   const header = (
-    <img src={filmesIMG + filme.poster_path} alt={filme.title} />
-  );
+    <img src={filmesIMG+movie.poster_path} alt={movie.title} />
+  )
+
   const footer = (
     <>
-        <Button label="Datails" icon="pi pi-check" />
+      <Button
+        className="w-full"
+        label="Datails"
+        icon="pi pi-check"
+        onClick={handleDetails}  
+      />
     </>
   )
   
   return (
-
-    <Card title={filme.title} footer={footer} header={header} className="md:w-20rem m-2">
-      <FaStar /> {filme.vote_average}
+    <Card title={movie.title} footer={footer} header={header} className="md:w-15rem m-2">
+      <span className="text-900 font-semibold">
+        <FaStar /> {movie.vote_average}
+      </span>
     </Card>
-  
   )
 }
 

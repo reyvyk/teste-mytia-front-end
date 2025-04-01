@@ -1,14 +1,12 @@
-import { use, useState } from 'react'
-import { Menubar } from 'primereact/menubar'
 import { InputText } from 'primereact/inputtext'
 import { MenuItem } from 'primereact/menuitem'
+import { useNavigate } from 'react-router-dom'
+import { Menubar } from 'primereact/menubar'
 import { Button } from 'primereact/button'
 import { FaSearch } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
-
+import { useState } from 'react'
 
 function Main_Menu() {
-  
   const [search, setSearch] = useState('')
   const navigate = useNavigate()
 
@@ -23,6 +21,7 @@ function Main_Menu() {
         icon: 'pi pi-users'
     }
   ]
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
@@ -33,7 +32,7 @@ function Main_Menu() {
     setSearch('')
   }
 
-  const start = <h1>Mega Filmes</h1>
+  const start = <h1 className='md:block hidden '>Movies</h1>
   const end = (
     <div className="flex align-items-center gap-2">
       <form onSubmit={handleSubmit}>
@@ -57,8 +56,8 @@ function Main_Menu() {
   )
 
   return (
-    <div className="card">
-        <Menubar model={items} start={start} end={end} />
+    <div className="card fixed top-0 left-0 right-0 z-1">
+        <Menubar className='h-4rem' model={items} start={start} end={end} />
     </div>
   )
 }

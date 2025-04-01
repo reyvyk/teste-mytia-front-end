@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
 import axios, { AxiosRequestConfig } from 'axios'
+import { useState, useEffect } from 'react'
 
 interface UseConfigAPIProps<T> {
   data: T | null
@@ -8,10 +8,9 @@ interface UseConfigAPIProps<T> {
 }
 
 const useServiceAPI = <T,>(url: string, config?: AxiosRequestConfig): UseConfigAPIProps<T> => {
-  const [data, setData] = useState<T | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
-  // console.log('URL:', url)
+  const [data, setData] = useState<T | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
